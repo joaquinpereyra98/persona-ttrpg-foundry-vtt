@@ -1,0 +1,30 @@
+{
+  "BOILERPLATE.AbilityAth": "Athleticism",
+  "BOILERPLATE.AbilityGut": "Guts",
+  "BOILERPLATE.AbilityPro": "Profiency",
+  "BOILERPLATE.AbilityKno": "Knowledge",
+  "BOILERPLATE.AbilityCha": "Charm",
+  "BOILERPLATE.AbilityStr": "Strength",
+  "BOILERPLATE.AbilityEnd": "Endurece",
+  "BOILERPLATE.AbilityAgi": "Agility",
+  "BOILERPLATE.AbilityMag": "Magic",
+  "BOILERPLATE.AbilityLuc": "Luck",
+
+  "BOILERPLATE.AbilityAthAbbr": "ath",
+  "BOILERPLATE.AbilityGutAbbr": "end",
+  "BOILERPLATE.AbilityProAbbr": "pro",
+  "BOILERPLATE.AbilityKnoAbbr": "kno",
+  "BOILERPLATE.AbilityChaAbbr": "cha",
+  "BOILERPLATE.AbilityStrAbbr": "str",
+  "BOILERPLATE.AbilityEndAbbr": "end",
+  "BOILERPLATE.AbilityAgiAbbr": "agi",
+  "BOILERPLATE.AbilityMagAbbr": "mag",
+  "BOILERPLATE.AbilityLucAbbr": "luc",
+
+  "BOILERPLATE.EffectCreate": "Create Effect",
+  "BOILERPLATE.EffectToggle": "Toggle Effect",
+  "BOILERPLATE.EffectEdit": "Edit Effect",
+  "BOILERPLATE.EffectDelete": "Delete Effect",
+
+  "BOILERPLATE.Add": "Add"
+}
