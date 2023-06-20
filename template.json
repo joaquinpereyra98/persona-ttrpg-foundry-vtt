@@ -40,13 +40,13 @@
           "value": 1,
           "max": 10
         },
-        "armor":{
-          "value": 0
-        },
+        "armor": 0,
         "tarot":{
           "arcana":"",
           "suit":""
-        }
+        },
+        "willpower": 0,
+        "wildcard": 0
       },
       "abilities": {
         "ath": {

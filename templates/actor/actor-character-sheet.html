@@ -5,13 +5,13 @@
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-      <div class="resources grid grid-4col">
+      <div class="resources grid grid-5col">
 
         <div class="resource flex-group-center">
           <label for="system.hp.value" class="resource-label">Hit Point</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="system.hp.value" value="{{system.hp.value}}" data-dtype="Number"/>
-          <span> / </span>
+          <span>/</span>
           <input type="text" name="system.hp.max" value="{{system.hp.max}}" data-dtype="Number"/>
           </div>
         </div>
@@ -20,7 +20,7 @@
           <label for="system.sp.value" class="resource-label">Spirit Point</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="system.sp.value" value="{{system.sp.value}}" data-dtype="Number"/>
-          <span> / </span>
+          <span>/</span>
           <input type="text" name="system.sp.max" value="{{system.sp.max}}" data-dtype="Number"/>
           </div>
         </div>
@@ -31,27 +31,42 @@
           <input type="text" name="system.attributes.level.value" value="{{system.attributes.level.value}}" data-dtype="Number"/>
           </div>
         </div>
-        <div class="resouce flex-group-center">
-          <label for="system.attributes.armor.value" class="resource-label">Armor</label>
-          <input type="text" name="system.attributes.armor.value" value="{{system.attributes.armor.value}}" data-dtype="Number"/>
+        <div class="resource flex-group-center">
+          <label for="system.attributes.armor" class="resource-label">Armor</label>
+          <input type="text" name="system.attributes.armor" value="{{system.attributes.armor}}" data-dtype="Number"/>
+        </div>
+        <div class="resource flex-group-center">
+            <label for="system.attributes.willpower" class="resource-label">Willpower</label>
+            <input type="text" name="system.attributes.willpower" value="{{system.attributes.willpower}}" data-dtype="Number">
         </div>
       </div>
     </div>
   </header>
   <section class="sub-header">
-    <div class="tarot gif grid-2col">
-      <div class="resouce flex-group-center">
+    <div class="tarot grid grid-3col">
+      <div class="resource flex-group-center">
         <label for="system.attributes.tarot.arcana" class="resource-label">Arcana</label>
         <input type="text" name="system.attributes.tarot.arcana" value="{{system.attributes.tarot.arcana}}" type="text" placeholder="Arcana"/>
       </div>
-      <div class="resouce flex-group-center">
+      <div class="resource flex-group-center">
         <label for="system.attributes.tarot.suit" class="resource-label">Arcana</label>
         <input type="text" name="system.attributes.tarot.suit" value="{{system.attributes.tarot.suit}}" type="text" placeholder="Suit"/>
+      </div>
+      <div class="resource flex-group-center">
+        <label for="system.attributes.wildcard" class="resource-label">Wildcards</label>
+        <div class="resource  flex-group-center">
+          <input type="checkbox " id="cb1" value="first_checkbox" checked />
+          <input type="checkbox" id="cb2" value="second_checkbox" checked />
+          <input type="checkbox" id="cb3" value="third_checkbox" checked />
+          <input type="checkbox" id="cb4" value="fourth_checkbox"/>
+          <input type="checkbox" id="cb5" value="fifth_checkbox"/>
+        </div>
       </div>
     </div>
     <div class="abilities grid grid-5col">
       {{#each system.abilities as |ability key|}}
       <div class="ability flex-group-center">
+        <span class="stat-icon"><i class="fas fa-dice-d6"></i> <i class="fas fa-dice-d6"></i></span>
         <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="2d6+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
         <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
       </div>
