@@ -55,9 +55,9 @@
       <div class="resource flex-group-center">
         <label for="system.attributes.wildcard" class="resource-label">Wildcards</label>
         <div class="resource  flex-group-center">
-          <input type="checkbox " id="cb1" value="first_checkbox" checked />
-          <input type="checkbox" id="cb2" value="second_checkbox" checked />
-          <input type="checkbox" id="cb3" value="third_checkbox" checked />
+          <input type="checkbox" id="cb1" value="first_checkbox" checked/>
+          <input type="checkbox" id="cb2" value="second_checkbox" checked/>
+          <input type="checkbox" id="cb3" value="third_checkbox" checked/>
           <input type="checkbox" id="cb4" value="fourth_checkbox"/>
           <input type="checkbox" id="cb5" value="fifth_checkbox"/>
         </div>
@@ -66,7 +66,6 @@
     <div class="abilities grid grid-5col">
       {{#each system.abilities as |ability key|}}
       <div class="ability flex-group-center">
-        <span class="stat-icon"><i class="fas fa-dice-d6"></i> <i class="fas fa-dice-d6"></i></span>
         <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="2d6+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
         <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
       </div>
