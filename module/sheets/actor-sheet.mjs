@@ -13,7 +13,7 @@ export class PTTRPGActorSheet extends ActorSheet {
       template: "systems/pttrpg/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "moves" }]
     });
   }
 
@@ -83,7 +83,7 @@ export class PTTRPGActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
-    const features = [];
+    const moves = [];
     const spells = {
       0: [],
       1: [],
@@ -104,9 +104,9 @@ export class PTTRPGActorSheet extends ActorSheet {
       if (i.type === 'item') {
         gear.push(i);
       }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      // Append to moves.
+      else if (i.type === 'move') {
+        moves.push(i);
       }
       // Append to spells.
       else if (i.type === 'spell') {
@@ -118,7 +118,7 @@ export class PTTRPGActorSheet extends ActorSheet {
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
+    context.moves = moves;
     context.spells = spells;
   }
 

@@ -72,7 +72,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "move", "spell"],
     "templates": {
       "base": {
         "description": ""
@@ -82,10 +82,11 @@
       "templates": ["base"],
       "quantity": 1,
       "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "formula": "2d6 + @str.mod"
     },
-    "feature": {
-      "templates": ["base"]
+    "move": {
+      "templates": ["base"],
+      "formula": ""
     },
     "spell": {
       "templates": ["base"],

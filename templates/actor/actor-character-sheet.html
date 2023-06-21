@@ -75,7 +75,7 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="item" data-tab="features">Moves</a>
+    <a class="item" data-tab="moves">Moves</a>
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
   </nav>
@@ -83,16 +83,13 @@
   {{!-- Sheet Body --}}
   <section class="sheet-body">
 
-    {{!-- Owned Features Tab --}}
-    <div class="tab features" data-group="primary" data-tab="features">
-      <section class="grid grid-2col">
-
-        {{!-- For the main features list, span the right two columns --}}
+    {{!-- Owned Moves Tab --}}
+    <div class="tab moves" data-group="primary" data-tab="moves">
+        {{!-- For the main moves list, span the right two columns --}}
         <section class="main grid-span-2">
-          {{> "systems/pttrpg/templates/actor/parts/actor-features.html"}}
+          {{> "systems/pttrpg/templates/actor/parts/actor-moves.html"}}
         </section>
 
-      </section>
     </div>
 
     {{!-- Biography Tab --}}
