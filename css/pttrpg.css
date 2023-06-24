@@ -230,6 +230,12 @@
   /* ----------------------------------------- */
   /* Example style for Boilerplate (can be removed if not needed) */
 }
+.pttrpg select{
+  width: calc(100% - 2px);
+  display: block;
+  text-align: center;
+  min-width: 20px;
+}
 .pttrpg .item-form {
   font-family: "Roboto", sans-serif;
 }

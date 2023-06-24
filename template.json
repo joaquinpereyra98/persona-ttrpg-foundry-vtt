@@ -36,17 +36,17 @@
     "character": {
       "templates": ["base"],
       "attributes": {
-        "level": {
-          "value": 1,
-          "max": 10
-        },
-        "armor": 0,
-        "tarot":{
-          "arcana":"",
-          "suit":""
-        },
-        "willpower": 0,
-        "wildcard": 0
+                "level": {
+                  "value": 1,
+                  "max": 10
+                },
+                "armor": 0,
+                "playbook":{
+                  "arcana":"",
+                  "suit":""
+                },
+                "willpower": 0,
+                "wildcard": 0
       },
       "abilities": {
         "ath": {
@@ -64,6 +64,18 @@
         "cha": {
           "value": 0
         }
+      },
+      "affinities":{
+        "physical": "",
+        "ranged": "",
+        "fire": "",
+        "ice": "",
+        "electric": "",
+        "wind": "",
+        "psychic": "",
+        "nuclear": "",
+        "bless": "",
+        "curse": ""
       }
     },
     "npc": {

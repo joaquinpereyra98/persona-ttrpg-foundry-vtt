@@ -28,7 +28,25 @@
         <div class="resource flex-group-center">
           <label for="system.attributes.level.value" class="resource-label">Level</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.attributes.level.value" value="{{system.attributes.level.value}}" data-dtype="Number"/>
+            <select name="system.attributes.level.value"  data-type="Number">
+              {{#select system.attributes.level.value}}
+              <option value= 1 selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="10">11</option>
+              <option value="10">12</option>
+              <option value="10">13</option>
+              <option value="10">14</option>
+              <option value="10">15</option>
+              {{/select}}
+            </select>
           </div>
         </div>
         <div class="resource flex-group-center">
@@ -43,31 +61,83 @@
     </div>
   </header>
   <section class="sub-header">
-    <div class="tarot grid grid-3col">
+    <div class="playbook grid grid-3col">
       <div class="resource flex-group-center">
-        <label for="system.attributes.tarot.arcana" class="resource-label">Arcana</label>
-        <input type="text" name="system.attributes.tarot.arcana" value="{{system.attributes.tarot.arcana}}" type="text" placeholder="Arcana"/>
+        <label for="system.attributes.playbook.arcana" class="resource-label">Arcana</label>
+        <select name="system.attributes.playbook.arcana"  data-type="String">
+          {{#select system.attributes.playbook.arcana}}
+          <option value="" selected></option>
+          <option value="Fool">0 - Fool</option>
+          <option value="Magician">I - Magician</option>
+          <option value="Priestess">II - Priestess</option>
+          <option value="Empress">III - Empress</option>
+          <option value="Emperor">IV - Emperor</option>
+          <option value="Hierophant">V - Hierophant</option>
+          <option value="Lovers">VI - Lovers</option>
+          <option value="Chariot">VII - Chariot</option>
+          <option value="Strength">VIII - Strength</option>
+          <option value="Hermit">IX - Hermit</option>
+          <option value="Fortune">X - Fortune</option>
+          <option value="Justice">XI - Justice</option>
+          <option value="Hanged">XII - Hanged</option>
+          <option value="Death">XIII - Death</option>
+          <option value="Temperance">XIV - Temperance</option>
+          <option value="Devil">XV - Devil</option>
+          <option value="Tower">XVI - Tower</option>
+          <option value="Star">XVII - Star</option>
+          <option value="Moon">XVIII - Moon</option>
+          <option value="Sun">XIX - Sun</option>
+          <option value="Judgment">XX - Judgment</option>
+          {{/select}}
+        </select>
       </div>
       <div class="resource flex-group-center">
-        <label for="system.attributes.tarot.suit" class="resource-label">Arcana</label>
-        <input type="text" name="system.attributes.tarot.suit" value="{{system.attributes.tarot.suit}}" type="text" placeholder="Suit"/>
-      </div>
+        <label for="system.attributes.playbook.suit" class="resource-label">Suit</label>
+        <select name="system.playbook.suit"  data-type="String">
+          {{#select system.playbook.suit}}
+          <option value="" selected></option> 
+          <option value="Wands">Wands</option> 
+          <option value="Cups">Cups</option> 
+          <option value="Coins">Coins</option> 
+          <option value="Swords">Swords</option> 
+          <option value="Compass">Compass</option> 
+          <option value="Aeon">Aeon</option> 
+          {{/select}}
+        </select>
+     </div>
       <div class="resource flex-group-center">
         <label for="system.attributes.wildcard" class="resource-label">Wildcards</label>
         <div class="resource  flex-group-center">
           <input type="checkbox" id="cb1" value="first_checkbox" checked/>
           <input type="checkbox" id="cb2" value="second_checkbox" checked/>
           <input type="checkbox" id="cb3" value="third_checkbox" checked/>
-          <input type="checkbox" id="cb4" value="fourth_checkbox"/>
-          <input type="checkbox" id="cb5" value="fifth_checkbox"/>
+          {{#if (eq system.attributes.playbook.arcana "Fortune")}}
+          <input type="checkbox" id="cb4" value="fourth_checkbox"checked/>
+          <input type="checkbox" id="cb5" value="fifth_checkbox"checked/>
+          {{/if}}
         </div>
       </div>
     </div>
+    <h3>Abilities</h3>
     <div class="abilities grid grid-5col">
       {{#each system.abilities as |ability key|}}
       <div class="ability flex-group-center">
         <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="2d6+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
         <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+      </div>
+      {{/each}}
+    </div>
+    <h3>Affinity</h3>
+    <div class="affinities grid grid-5col">
+      {{#each system.affinities as |affinities key|}}
+      <div class="ability flex-group-center">
+        <label for="system.affinities.{{key}}" class="resource-label rollable flexlarge align-left">{{key}}</label>
+        <select id="affinities-selector" data-type="String">
+          <option value=""> </option>
+          <option value="major">Major Affinity</option>
+          <option value="minor">Minor Affinity</option>
+          <option value="weak">Weakness</option>
+        </select> 
       </div>
       {{/each}}
     </div>
