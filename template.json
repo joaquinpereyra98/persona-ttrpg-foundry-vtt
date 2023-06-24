@@ -84,10 +84,11 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "move", "spell"],
     "templates": {
       "base": {
-        "description": ""
+        "description": "",
+        "dice": "2d6"
       }
     },
     "item": {
@@ -96,7 +97,7 @@
       "weight": 0,
       "formula": "d20 + @str.mod + ceil(@lvl / 2)"
     },
-    "feature": {
+    "move": {
       "templates": ["base"]
     },
     "spell": {
