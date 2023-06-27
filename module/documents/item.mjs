@@ -38,7 +38,7 @@ export class PTTRPGItem extends Item {
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
     const label = `[${item.type}] ${item.name}`;
-
+    console.log(item.type=='move');
     // If there's no roll data, send a chat message.
     if (!this.system.formula) {
       ChatMessage.create({
