@@ -1,6 +1,9 @@
 <ol class="items-list">
   <li class="item flexrow items-header">
     <div class="item-name">Moves</div>
+    <div class="item-typeRoll">Stat</div>
+    <div class="item-rollModf">Modifier</div>
+    <div class="item-moveType">Type</div>
     <div class="item-controls">
       <a class="item-control item-create" title="Create item" data-type="move"><i class="fas fa-plus"></i> Add item</a>
     </div>
@@ -13,6 +16,9 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
+      <div class="item-typeRoll item-prop">{{toUpperCase  item.system.typeRoll}}</div>
+      <div class="rollModf item-prop">{{item.system.rollModf}}</div>
+      <div class="moveType item-prop">{{item.system.moveType}}</div>
       <div class="item-controls">
         <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
         <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>

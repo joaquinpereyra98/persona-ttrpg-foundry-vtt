@@ -88,17 +88,24 @@
     "templates": {
       "base": {
         "description": "",
-        "dice": "2d6"
+        "formula": "2d6",
+        "typeRoll": "",
+        "rollModf": 0,
+        "moveType": ""
       }
     },
     "item": {
       "templates": ["base"],
       "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "weight": 0
     },
     "move": {
-      "templates": ["base"]
+      "templates": ["base"],
+      "results": {
+        "success": "",
+        "partial": "",
+        "fail":""
+      }
     },
     "spell": {
       "templates": ["base"],

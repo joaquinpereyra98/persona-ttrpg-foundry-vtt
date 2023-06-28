@@ -17,13 +17,52 @@
 
     {{!-- Description Tab --}}
     <div class="tab" data-group="primary" data-tab="description">
-      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
+    <label class="resource-label">Description</label>
+      <textarea name="system.description" value="{{system.results.description}}" cols="30" rows="10">{{system.description}}</textarea>
+    <label class="resource-label">On Complete Success</label>
+      <textarea  name="system.results.success" value="{{system.results.success}}" cols="30" rows="10">{{system.results.success}}</textarea>
+    <label class="resource-label">On Mixed Success...</label>
+      <textarea  name="system.results.partial" value="{{system.results.partial}}"cols="30" rows="10" >{{system.results.partial}}</textarea>
+    <label class="resource-label">On Failure Success...</label>
+    <textarea  name="system.results.fail" value="{{system.results.fail}}" cols="30" rows="10">{{system.results.fail}}</textarea>
     </div>
 
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
-      {{!-- As you add new fields, add them in here! --}}
+      <label class="resource-label">Type Roll</label>
+      <select  name="system.typeRoll"  data-type="String">
+        {{#select system.typeRoll}}
+            <option value="" selected></option>
+            <option value="str">Strength</option>
+            <option value="agi">Agility</option>
+            <option value="end">Endurece</option>
+            <option value="mag">Magic</option>
+            <option value="luc">Luck</option>
+            <option value="ath">Athleticism</option>
+            <option value="pro">Profiency</option>
+            <option value="gut">Guts</option>
+            <option value="kno">Knowledge</option>
+            <option value="cha">Charm</option>
+            <option value="custom">Custom Roll Formula</option>
+        {{/select}}
+      </select>
+      {{#if (eq system.typeRoll 'custom')}}
+      <label class="resource-label"> Custom Formula</label>
+      <input type="text" name="system.formula" value="{{system.formula}}" data-dtype="String"/>
+      {{/if}}
+      <label class="resource-label">Roll Modifier</label>
+      <input type="text" name="system.rollModf" value="{{system.rollModf}}" data-dtype="String"/>
+      <label class="resource-label">Move Type</label>
+      <select name="system.moveType">
+        {{#select system.moveType}}
+          <option value="" selected></option>
+          <option value="basic">Basic Move</option>
+          <option value="suit">Suit Move</option>
+          <option value="arcana">Arcana Move</option>
+          <option value="downtime">Downtime Move</option>
+          <option value="special">Special Move</option>
+        {{/select}}
+      </select>
     </div>
   </section>
-
 </form>
