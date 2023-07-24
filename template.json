@@ -36,17 +36,17 @@
     "character": {
       "templates": ["base"],
       "attributes": {
-        "level": {
-          "value": 1,
-          "max": 10
-        },
-        "armor": 0,
-        "tarot":{
-          "arcana":"",
-          "suit":""
-        },
-        "willpower": 0,
-        "wildcard": 0
+                "level": {
+                  "value": 1,
+                  "max": 10
+                },
+                "armor": 0,
+                "playbook":{
+                  "arcana":"",
+                  "suit":""
+                },
+                "willpower": 0,
+                "wildcard": 0
       },
       "abilities": {
         "ath": {
@@ -64,6 +64,18 @@
         "cha": {
           "value": 0
         }
+      },
+      "affinities":{
+        "physical": "",
+        "ranged": "",
+        "fire": "",
+        "ice": "",
+        "electric": "",
+        "wind": "",
+        "psychic": "",
+        "nuclear": "",
+        "bless": "",
+        "curse": ""
       }
     },
     "npc": {
@@ -75,18 +87,24 @@
     "types": ["item", "move", "spell"],
     "templates": {
       "base": {
-        "description": ""
+        "description": "",
+        "formula": "2d6",
+        "typeRoll": "",
+        "rollModf": 0,
+        "moveType": ""
       }
     },
     "item": {
       "templates": ["base"],
       "quantity": 1,
+
       "weight": 0,
       "formula": "2d6 + @str.mod"
     },
     "move": {
       "templates": ["base"],
       "formula": ""
+
     },
     "spell": {
       "templates": ["base"],

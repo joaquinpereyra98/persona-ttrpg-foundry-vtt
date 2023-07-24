@@ -38,7 +38,50 @@ export class PTTRPGItem extends Item {
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
     const label = `[${item.type}] ${item.name}`;
-
+    const typeRoll = this.system.typeRoll.toLowerCase();
+    if(item.type=='move') {
+      if(typeRoll == 'custom') {
+        let r =new Roll("@item.formula + @item.rollModf", this.getRollData());
+        r.toMessage({
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: label,
+        });
+        return r;
+      }
+      else {
+        let r = new Roll(`2d6 + @${typeRoll}.mod + @item.rollModf`, this.getRollData());
+        await r.roll({async: true});
+        console.log(r.total);
+        if(r.total>=10)
+          ChatMessage.create({
+            speaker: speaker,
+            rollMode: rollMode,
+            flavor: label,
+            content: item.system.results.success ?? ''
+          });
+        else if(r.total>=7)
+          ChatMessage.create({
+            speaker: speaker,
+            rollMode: rollMode,
+            flavor: label,
+            content: item.system.results.partial ?? ''
+          });
+          else
+          ChatMessage.create({
+            speaker: speaker,
+            rollMode: rollMode,
+            flavor: label,
+            content: item.system.results.fail ?? ''
+          });
+        r.toMessage({
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: `${label}`,
+        });
+        return r;
+      }
+    }
     // If there's no roll data, send a chat message.
     if (!this.system.formula) {
       ChatMessage.create({
@@ -52,7 +95,6 @@ export class PTTRPGItem extends Item {
     else {
       // Retrieve roll data.
       const rollData = this.getRollData();
-
       // Invoke the roll and submit it to chat.
       const roll = new Roll(rollData.item.formula, rollData);
       // If you need to store the value first, uncomment the next line.
