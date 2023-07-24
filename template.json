@@ -97,15 +97,14 @@
     "item": {
       "templates": ["base"],
       "quantity": 1,
-      "weight": 0
+
+      "weight": 0,
+      "formula": "2d6 + @str.mod"
     },
     "move": {
       "templates": ["base"],
-      "results": {
-        "success": "",
-        "partial": "",
-        "fail":""
-      }
+      "formula": ""
+
     },
     "spell": {
       "templates": ["base"],
