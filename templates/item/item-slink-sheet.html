@@ -30,6 +30,7 @@
             <option value="Moon">XVIII - Moon</option>
             <option value="Sun">XIX - Sun</option>
             <option value="Judgment">XX - Judgment</option>
+            <option value="World">XXI - The World</option>
             {{/select}}
           </select>
         </div>
@@ -88,8 +89,16 @@
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       {{!-- As you add new fields, add them in here! --}}
       <div class="resource">
-        <label class="resource-label">Roll Formula</label>
-        <input type="text" name="system.formula" value="{{system.formula}}" data-dtype="String"/>
+        <label class="resource-label">Bonus Rank 1</label>
+        <textarea name="system.bonus.one" value="{{system.bonus.one}}" cols="30" rows="10">{{system.bonus.one}}</textarea>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Bonus Rank 3</label>
+        <textarea name="system.bonus.one" value="{{system.bonus.three}}" cols="30" rows="10">{{system.bonus.three}}</textarea>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Bonus Rank 5</label>
+        <textarea name="system.bonus.one" value="{{system.bonus.five}}" cols="30" rows="10">{{system.bonus.five}}</textarea>
       </div>
     </div>
   </section>
