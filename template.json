@@ -94,9 +94,7 @@
     "item": {
       "templates": ["base"],
       "quantity": 1,
-
-      "weight": 0,
-      "formula": "2d6 + @str.mod"
+      "weight": 0
     },
     "move": {
       "templates": ["base"],
