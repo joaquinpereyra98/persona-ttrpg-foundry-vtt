@@ -108,12 +108,12 @@
       <div class="resource flex-group-center">
         <label for="system.attributes.wildcard" class="resource-label">Wildcards</label>
         <div class="resource  flex-group-center">
-          <input type="checkbox" id="cb1" value="first_checkbox" checked/>
-          <input type="checkbox" id="cb2" value="second_checkbox" checked/>
-          <input type="checkbox" id="cb3" value="third_checkbox" checked/>
+          <input type="checkbox" name="system.attributes.wc_cb0" value="wc_cb0" {{checked system.attributes.wc_cb0}}/>
+          <input type="checkbox" name="system.attributes.wc_cb1" value="wc_cb1" {{checked system.attributes.wc_cb1}}/>
+          <input type="checkbox" name="system.attributes.wc_cb2" value="wc_cb2" {{checked system.attributes.wc_cb2}}/>
           {{#if (eq system.attributes.playbook.arcana "Fortune")}}
-          <input type="checkbox" id="cb4" value="fourth_checkbox"checked/>
-          <input type="checkbox" id="cb5" value="fifth_checkbox"checked/>
+          <input type="checkbox" name="system.attributes.wc_cb3" value="wc_cb3" {{checked system.attributes.wc_cb3}}/>
+          <input type="checkbox" name="system.attributes.wc_cb4" value="wc_cb4" {{checked system.attributes.wc_cb4}}/>
           {{/if}}
         </div>
       </div>
@@ -133,10 +133,12 @@
       <div class="ability flex-group-center">
         <label for="system.affinities.{{key}}" class="resource-label rollable flexlarge align-left">{{key}}</label>
         <select id="affinities-selector" data-type="String">
+        {{#select affinities-selector}}
           <option value=""> </option>
           <option value="major">Major Affinity</option>
           <option value="minor">Minor Affinity</option>
           <option value="weak">Weakness</option>
+          {{/select}}
         </select> 
       </div>
       {{/each}}
@@ -148,6 +150,7 @@
     <a class="item" data-tab="moves">Moves</a>
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
+    <a class="item" data-tab="slink">Social Links</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -155,7 +158,6 @@
 
     {{!-- Owned Moves Tab --}}
     <div class="tab moves" data-group="primary" data-tab="moves">
-        {{!-- For the main moves list, span the right two columns --}}
         <section class="main grid-span-2">
           {{> "systems/pttrpg/templates/actor/parts/actor-moves.html"}}
         </section>
@@ -170,6 +172,10 @@
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
        {{> "systems/pttrpg/templates/actor/parts/actor-items.html"}}
+    </div>
+    {{!-- Owned slink Tab --}}
+    <div class="tab slink" data-group="primary" data-tab="slink">
+        {{> "systems/pttrpg/templates/actor/parts/actor-slink.html"}}
     </div>
   </section>
 </form>

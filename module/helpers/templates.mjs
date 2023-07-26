@@ -11,5 +11,6 @@
     "systems/pttrpg/templates/actor/parts/actor-items.html",
     "systems/pttrpg/templates/actor/parts/actor-spells.html",
     "systems/pttrpg/templates/actor/parts/actor-effects.html",
+    "systems/pttrpg/templates/actor/parts/actor-slink.html"
   ]);
 };

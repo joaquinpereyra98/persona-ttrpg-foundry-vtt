@@ -1,0 +1,96 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+      <div class="grid grid-2col">
+        <div class="resource">
+          <label class="resource-label">Arcana</label>
+          <select name="system.arcana"  data-type="String">
+            {{#select system.arcana}}
+            <option value="" selected></option>
+            <option value="Fool">0 - Fool</option>
+            <option value="Magician">I - Magician</option>
+            <option value="Priestess">II - Priestess</option>
+            <option value="Empress">III - Empress</option>
+            <option value="Emperor">IV - Emperor</option>
+            <option value="Hierophant">V - Hierophant</option>
+            <option value="Lovers">VI - Lovers</option>
+            <option value="Chariot">VII - Chariot</option>
+            <option value="Strength">VIII - Strength</option>
+            <option value="Hermit">IX - Hermit</option>
+            <option value="Fortune">X - Fortune</option>
+            <option value="Justice">XI - Justice</option>
+            <option value="Hanged">XII - Hanged</option>
+            <option value="Death">XIII - Death</option>
+            <option value="Temperance">XIV - Temperance</option>
+            <option value="Devil">XV - Devil</option>
+            <option value="Tower">XVI - Tower</option>
+            <option value="Star">XVII - Star</option>
+            <option value="Moon">XVIII - Moon</option>
+            <option value="Sun">XIX - Sun</option>
+            <option value="Judgment">XX - Judgment</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="resource">
+          <label for="system.rank" class="resource-label">Rank</label>
+          <select name="system.rank"  data-type="Number">
+            {{#select system.rank}}
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            {{/select}}
+          </select>
+        </div>
+      </div>
+      <label for="system.spx" class="resource-label flex-group-center">SFX</label>
+      <div class="resource  flex-group-center">
+        <input type="checkbox" name="system.spx_cb01" {{checked system.spx_cb01}} />
+        <input type="checkbox" name="system.spx_cb02" {{checked system.spx_cb02}} />
+        <input type="checkbox" name="system.spx_cb03" {{checked system.spx_cb03}} >
+        {{#ifCond system.rank ">=" 1}}
+        <input type="checkbox" name="system.spx_cb04" {{checked system.spx_cb04}} />
+        <input type="checkbox" name="system.spx_cb05" {{checked system.spx_cb05}} />
+        <input type="checkbox" name="system.spx_cb06" {{checked system.spx_cb06}} />
+        {{/ifCond}}
+        {{#ifCond system.rank ">=" 2}}
+        <input type="checkbox" name="system.spx_cb07" {{checked system.spx_cb07}} />
+        <input type="checkbox" name="system.spx_cb08" {{checked system.spx_cb08}} />
+        <input type="checkbox" name="system.spx_cb09" {{checked system.spx_cb09}} />
+        {{/ifCond}}
+        {{#ifCond system.rank ">=" 3}}
+        <input type="checkbox" name="system.spx_cb10" {{checked system.spx_cb10}}/>
+        {{/ifCond}}
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="attributes">Attributes</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Description Tab --}}
+    <div class="tab" data-group="primary" data-tab="description">
+      {{!-- To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the rollData prop. --}}
+      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      {{!-- As you add new fields, add them in here! --}}
+      <div class="resource">
+        <label class="resource-label">Roll Formula</label>
+        <input type="text" name="system.formula" value="{{system.formula}}" data-dtype="String"/>
+      </div>
+    </div>
+  </section>
+</form>

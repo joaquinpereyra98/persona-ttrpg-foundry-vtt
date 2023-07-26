@@ -45,8 +45,7 @@
                   "arcana":"",
                   "suit":""
                 },
-                "willpower": 0,
-                "wildcard": 0
+                "willpower": 0
       },
       "abilities": {
         "ath": {
@@ -84,14 +83,12 @@
     }
   },
   "Item": {
-    "types": ["item", "move", "spell"],
+    "types": ["item", "move", "slink","spell"],
     "templates": {
       "base": {
         "description": "",
-        "formula": "2d6",
         "typeRoll": "",
-        "rollModf": 0,
-        "moveType": ""
+        "rollModf": 0
       }
     },
     "item": {
@@ -103,8 +100,12 @@
     },
     "move": {
       "templates": ["base"],
-      "formula": ""
-
+      "formula": "",
+      "moveType": ""
+    },
+    "slink":{
+      "templates": ["base"],
+      "rank": 0
     },
     "spell": {
       "templates": ["base"],

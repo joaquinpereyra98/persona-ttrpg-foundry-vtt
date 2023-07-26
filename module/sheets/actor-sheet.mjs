@@ -26,31 +26,21 @@ export class PTTRPGActorSheet extends ActorSheet {
 
   /** @override */
   getData() {
-    // Retrieve the data structure from the base sheet. You can inspect or log
-    // the context variable to see the structure, but some key properties for
-    // sheets are the actor object, the data object, whether or not it's
-    // editable, the items array, and the effects array.
     const context = super.getData();
-
-    // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.toObject(false);
 
-    // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
 
-    // Prepare character data and items.
     if (actorData.type == 'character') {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
 
-    // Prepare NPC data and items.
     if (actorData.type == 'npc') {
       this._prepareItems(context);
     }
 
-    // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
 
     // Prepare active effects
@@ -84,6 +74,7 @@ export class PTTRPGActorSheet extends ActorSheet {
     // Initialize containers.
     const gear = [];
     const moves = [];
+    const slink = [];
     const spells = {
       0: [],
       1: [],
@@ -108,6 +99,9 @@ export class PTTRPGActorSheet extends ActorSheet {
       else if (i.type === 'move') {
         moves.push(i);
       }
+      else if (i.type ==='slink'){
+        slink.push(i);
+      }
       // Append to spells.
       else if (i.type === 'spell') {
         if (i.system.spellLevel != undefined) {
@@ -119,6 +113,7 @@ export class PTTRPGActorSheet extends ActorSheet {
     // Assign and return
     context.gear = gear;
     context.moves = moves;
+    context.slink = slink;
     context.spells = spells;
   }
 

@@ -52,7 +52,7 @@ Hooks.once('init', async function() {
 /*  Handlebars Helpers                          */
 /* -------------------------------------------- */
 
-// If you need to add Handlebars helpers, here are a few useful examples:
+
 Handlebars.registerHelper('concat', function() {
   var outStr = '';
   for (var arg in arguments) {
@@ -68,6 +68,34 @@ Handlebars.registerHelper('toUpperCase', function(str) {
 });
 Handlebars.registerHelper('toLowerCase', function(str) {
   return str.toLowerCase();
+});
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+  switch (operator) {
+      case '==':
+          return (v1 == v2) ? options.fn(this) : options.inverse(this);
+      case '===':
+          return (v1 === v2) ? options.fn(this) : options.inverse(this);
+      case '!=':
+          return (v1 != v2) ? options.fn(this) : options.inverse(this);
+      case '!==':
+          return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+      case '<':
+          return (v1 < v2) ? options.fn(this) : options.inverse(this);
+      case '<=':
+          return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+      case '>':
+          return (v1 > v2) ? options.fn(this) : options.inverse(this);
+      case '>=':
+          return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+      case '&&':
+          return (v1 && v2) ? options.fn(this) : options.inverse(this);
+      case '||':
+          return (v1 || v2) ? options.fn(this) : options.inverse(this);
+      default:
+          return options.inverse(this);
+  }
 });
 
 /* -------------------------------------------- */
