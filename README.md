@@ -14,11 +14,11 @@ This project is a system for Foundry VTT, designed specifically for playing the 
  **Major**
 
   - [ ] Redesing Character Sheet
-       - [ ] Social Links Sheet Section
+       - [x] Social Links Sheet Section
        - [ ] Moves Category Sheet Section 
        - [ ] Skill Sheet Section
        - [ ] Status Sheet Section
-       - [ ] Items Sheet Section
+       - [x] Items Sheet Section
        - [ ] MAKE THE SHEET LESS UGLY.
   - [ ] Moves Layout Chat
   - [ ] Prepare manifest
