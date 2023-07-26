@@ -129,19 +129,125 @@
     </div>
     <h3>Affinity</h3>
     <div class="affinities grid grid-5col">
-      {{#each system.affinities as |affinities key|}}
       <div class="ability flex-group-center">
-        <label for="system.affinities.{{key}}" class="resource-label rollable flexlarge align-left">{{key}}</label>
-        <select id="affinities-selector" data-type="String">
-        {{#select affinities-selector}}
-          <option value=""> </option>
-          <option value="major">Major Affinity</option>
-          <option value="minor">Minor Affinity</option>
-          <option value="weak">Weakness</option>
-          {{/select}}
-        </select> 
-      </div>
-      {{/each}}
+      <label for="system.affinities.physical" class="resource-label rollable flexlarge align-left">Physical</label>
+      <select name="system.affinities.physical" data-type="String">
+        {{#select system.affinities.physical}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.ranged" class="resource-label rollable flexlarge align-left">Ranged</label>
+      <select name="system.affinities.ranged" data-type="String">
+        {{#select system.affinities.ranged}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.fire" class="resource-label rollable flexlarge align-left">Fire</label>
+      <select name="system.affinities.fire" data-type="String">
+        {{#select system.affinities.fire}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.ice" class="resource-label rollable flexlarge align-left">Ice</label>
+      <select name="system.affinities.ice" data-type="String">
+        {{#select system.affinities.ice}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.electric" class="resource-label rollable flexlarge align-left">Electric</label>
+      <select name="system.affinities.electric" data-type="String">
+        {{#select system.affinities.electric}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.wind" class="resource-label rollable flexlarge align-left">Wind</label>
+      <select name="system.affinities.wind" data-type="String">
+        {{#select system.affinities.wind}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.psychic" class="resource-label rollable flexlarge align-left">Psychic</label>
+      <select name="system.affinities.psychic" data-type="String">
+        {{#select system.affinities.psychic}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.nuclear" class="resource-label rollable flexlarge align-left">Nuclear</label>
+      <select name="system.affinities.nuclear" data-type="String">
+        {{#select system.affinities.nuclear}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.bless" class="resource-label rollable flexlarge align-left">Bless</label>
+      <select name="system.affinities.bless" data-type="String">
+        {{#select system.affinities.bless}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
+    
+    <div class="ability flex-group-center">
+      <label for="system.affinities.curse" class="resource-label rollable flexlarge align-left">Curse</label>
+      <select name="system.affinities.curse" data-type="String">
+        {{#select system.affinities.curse}}
+        <option value=""> </option>
+        <option value="major">Major Affinity</option>
+        <option value="minor">Minor Affinity</option>
+        <option value="weak">Weakness</option>
+        {{/select}}
+      </select> 
+    </div>
     </div>
   </section>
   {{!-- Sheet Tab Navigation --}}
