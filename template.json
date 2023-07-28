@@ -99,7 +99,7 @@
     "move": {
       "templates": ["base"],
       "formula": "",
-      "moveType": ""
+      "moveType": "Basic"
     },
     "slink":{
       "templates": ["base"],

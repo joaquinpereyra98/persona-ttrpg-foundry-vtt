@@ -76,7 +76,13 @@ export class PTTRPGActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
-    const moves = [];
+    const moves = {
+      "Basic": [],
+      "Suit": [],
+      "Arcana": [],
+      "Downtime": [],
+      "Special": []
+    };
     const slink = [];
     const skills = {
       "Physical": [],
@@ -100,7 +106,10 @@ export class PTTRPGActorSheet extends ActorSheet {
       }
       // Append to moves.
       else if (i.type === 'move') {
-        moves.push(i);
+        if(i.system.moveType != undefined){
+          console.log(i.system.moveType);
+          moves[i.system.moveType].push(i);
+        }
       }
       else if (i.type ==='slink'){
         slink.push(i);
@@ -180,12 +189,12 @@ export class PTTRPGActorSheet extends ActorSheet {
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
-    console.log(data)
     const itemData = {
       name: name,
       type: type,
       system: data
     };
+    console.log(itemData)
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.system["type"];
 
