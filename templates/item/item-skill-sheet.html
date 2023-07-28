@@ -3,30 +3,37 @@
     <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+      <div class="grid grid-2col">
+        <div class="resource">
+          <label class="resource-label">Skill Affinity</label>
+          <select name="system.skillAffinity" data-dtype="string">
+            {{#select system.skillAffinity}}
+                <option value="Physical">Physical</option>
+                <option value="Ranged">Ranged</option>
+                <option value="Fire">Fire</option>
+                <option value="Ice">Ice</option>
+                <option value="Electric">Electric</option>
+                <option value="Wind">Wind</option>
+                <option value="Psychic">Psychic</option>
+                <option value="Nuclear">Nuclear</option>
+                <option value="Bless">Nuclear</option>
+                <option value="Curse">Curse</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="resource">
+          <label class="resource-label">Level Requirement</label>
+          <input type="text" name="system.levelRequirement" value="{{system.levelRequirement}}" data-dtype="Number"/>
+        </div>
+      </div>
     </div>
   </header>
 
-  {{!-- Sheet Tab Navigation --}}
-  <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="attributes">Attributes</a>
-  </nav>
-
   {{!-- Sheet Body --}}
   <section class="sheet-body">
-
-    {{!-- Description Tab --}}
-    <div class="tab" data-group="primary" data-tab="description">
-      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
-    </div>
-
-    {{!-- Attributes Tab --}}
-    <div class="tab attributes" data-group="primary" data-tab="attributes">
-      {{!-- As you add new fields, add them in here! --}}
-      <div class="resource">
-        <label class="resource-label">Skill Affinity</label>
-        <input type="text" name="system.skillAffinity" value="{{system.skillAffinity}}" data-dtype="text"/>
-      </div>
+    <div class="resource">
+      <label class="resource-label">Effect</label>
+      <textarea name="system.description" value="{{system.description}}" cols="30" rows="5">{{system.description}}</textarea>
     </div>
   </section>
 </form>

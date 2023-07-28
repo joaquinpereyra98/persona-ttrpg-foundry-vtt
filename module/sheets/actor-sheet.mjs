@@ -180,6 +180,7 @@ export class PTTRPGActorSheet extends ActorSheet {
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
+    console.log(data)
     const itemData = {
       name: name,
       type: type,

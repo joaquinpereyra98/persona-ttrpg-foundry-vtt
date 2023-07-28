@@ -107,7 +107,8 @@
     },
     "skill": {
       "templates": ["base"],
-      "skillAffinity": "Physical"
+      "skillAffinity": "Physical",
+      "levelRequirement": 0
     }
   }
 }
