@@ -78,17 +78,17 @@ export class PTTRPGActorSheet extends ActorSheet {
     const gear = [];
     const moves = [];
     const slink = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
+    const skills = {
+      "Physical": [],
+      "Ranged": [],
+      "Fire": [],
+      "Ice": [],
+      "Electric": [],
+      "Wind": [],
+      "Psychic": [],
+      "Nuclear": [],
+      "Bless": [],
+      "Curse": []
     };
 
     // Iterate through items, allocating to containers
@@ -105,10 +105,10 @@ export class PTTRPGActorSheet extends ActorSheet {
       else if (i.type ==='slink'){
         slink.push(i);
       }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
+      // Append to skills.
+      else if (i.type === 'skill') {
+        if (i.system.skillAffinity != undefined) {
+          skills[i.system.skillAffinity].push(i);
         }
       }
     }
@@ -117,7 +117,7 @@ export class PTTRPGActorSheet extends ActorSheet {
     context.gear = gear;
     context.moves = moves;
     context.slink = slink;
-    context.spells = spells;
+    context.skills = skills;
   }
 
   /* -------------------------------------------- */

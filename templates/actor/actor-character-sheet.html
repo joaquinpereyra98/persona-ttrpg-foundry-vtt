@@ -266,6 +266,7 @@
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
     <a class="item" data-tab="slink">Social Links</a>
+    <a class="item" data-tab="skills">Skills</a>
   </nav>
 
   {{!-- Sheet Body --}}
@@ -276,7 +277,6 @@
         <section class="main grid-span-2">
           {{> "systems/pttrpg/templates/actor/parts/actor-moves.html"}}
         </section>
-
     </div>
 
     {{!-- Biography Tab --}}
@@ -288,9 +288,15 @@
     <div class="tab items" data-group="primary" data-tab="items">
        {{> "systems/pttrpg/templates/actor/parts/actor-items.html"}}
     </div>
-    {{!-- Owned slink Tab --}}
+
+    {{!-- Owned Social-Link Tab --}}
     <div class="tab slink" data-group="primary" data-tab="slink">
         {{> "systems/pttrpg/templates/actor/parts/actor-slink.html"}}
+    </div>
+
+    {{!-- Owned Skills Tab --}}
+    <div class="tab skills" data-group="primary" data-tab="skills">
+      {{> "systems/pttrpg/templates/actor/parts/actor-skills.html"}}
     </div>
   </section>
 </form>

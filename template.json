@@ -83,7 +83,7 @@
     }
   },
   "Item": {
-    "types": ["item", "move", "slink","spell"],
+    "types": ["item", "move", "slink", "skill"],
     "templates": {
       "base": {
         "description": "",
@@ -105,9 +105,9 @@
       "templates": ["base"],
       "rank": 0
     },
-    "spell": {
+    "skill": {
       "templates": ["base"],
-      "spellLevel": 1
+      "skillAffinity": "Physical"
     }
   }
 }
