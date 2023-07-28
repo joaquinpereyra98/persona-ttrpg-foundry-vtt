@@ -50,9 +50,8 @@ export class PTTRPGItem extends Item {
         return r;
       }
       else {
-        let r = new Roll(`2d6 + @${typeRoll}.mod + @item.rollModf`, this.getRollData());
+        let r = new Roll(`2d6 + @${typeRoll}.value + @item.rollModf`, this.getRollData());
         await r.roll({async: true});
-        console.log(r.total);
         if(r.total>=10)
           ChatMessage.create({
             speaker: speaker,
