@@ -15,8 +15,8 @@ This project is a system for Foundry VTT, designed specifically for playing the 
 
   - [ ] Redesing Character Sheet
        - [x] Social Links Sheet Section
-       - [ ] Moves Category Sheet Section 
-       - [ ] Skill Sheet Section
+       - [x] Moves Category Sheet Section 
+       - [x] Skill Sheet Section
        - [ ] Status Sheet Section
        - [x] Items Sheet Section
        - [ ] MAKE THE SHEET LESS UGLY.
