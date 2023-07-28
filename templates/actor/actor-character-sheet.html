@@ -118,11 +118,20 @@
         </div>
       </div>
     </div>
+    <h3>Aspects</h3>
+    <div class="abilities grid grid-5col">
+    {{#each system.aspects as |aspect key|}}
+      <div class="ability flex-group-center">
+        <label for="system.aspects.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="2d6+{{aspect.value}}" data-label="{{aspect.label}}">{{aspect.label}}</label>
+        <input type="text" name="system.aspects.{{key}}.value" value="{{aspect.value}}" data-dtype="Number"/>
+      </div>
+      {{/each}}
+    </div>
     <h3>Abilities</h3>
     <div class="abilities grid grid-5col">
       {{#each system.abilities as |ability key|}}
       <div class="ability flex-group-center">
-        <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="2d6+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
+        <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="2d6+@abilities.{{key}}.value" data-label="{{ability.label}}">{{ability.label}}</label>
         <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
       </div>
       {{/each}}

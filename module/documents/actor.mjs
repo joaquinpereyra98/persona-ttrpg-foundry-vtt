@@ -20,11 +20,10 @@ export class PTTRPGActor extends Actor {
   _prepareCharacterData(actorData) {
     if (actorData.type !== 'character') return;
 
-    const systemData = actorData.system;
-
+    /*const systemData = actorData.system;
     for (let [key, ability] of Object.entries(systemData.abilities)) {
       ability.mod = (ability.value);
-    }
+    }*/
   }
 
   _prepareNpcData(actorData) {

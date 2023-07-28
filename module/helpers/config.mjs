@@ -4,12 +4,16 @@ export const BOILERPLATE = {};
  * The set of Ability Scores used within the sytem.
  * @type {Object}
  */
+
+BOILERPLATE.aspects = {
+  "ath": "BOILERPLATE.AspectAth",
+  "pro": "BOILERPLATE.AspectPro",
+  "gut": "BOILERPLATE.AspectGut",
+  "kno": "BOILERPLATE.AspectKno",
+  "cha": "BOILERPLATE.AspectCha",
+};
+
  BOILERPLATE.abilities = {
-  "ath": "BOILERPLATE.AbilityAth",
-  "pro": "BOILERPLATE.AbilityPro",
-  "gut": "BOILERPLATE.AbilityGut",
-  "kno": "BOILERPLATE.AbilityKno",
-  "cha": "BOILERPLATE.AbilityCha",
   "str": "BOILERPLATE.AbilityStr",
   "end": "BOILERPLATE.AbilityEnd",
   "agi": "BOILERPLATE.AbilityAgi",
@@ -17,12 +21,15 @@ export const BOILERPLATE = {};
   "luc": "BOILERPLATE.AbilityLuc"
 };
 
-BOILERPLATE.abilityAbbreviations = {
+BOILERPLATE.aspectsAbbreviations = {
   "ath": "BOILERPLATE.AbilityAthAbbr",
   "pro": "BOILERPLATE.AbilityProAbbr",
   "gut": "BOILERPLATE.AbilityGutAbbr",
   "kno": "BOILERPLATE.AbilityKnoAbbr",
-  "cha": "BOILERPLATE.AbilityChaAbbr",
+  "cha": "BOILERPLATE.AbilityChaAbbr"
+};
+
+BOILERPLATE.abilityAbbreviations = {
   "str": "BOILERPLATE.AbilityStrAbbr",
   "end": "BOILERPLATE.AbilityEndAbbr",
   "agi": "BOILERPLATE.AbilityAgiAbbr",
