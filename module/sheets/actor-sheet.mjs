@@ -107,7 +107,6 @@ export class PTTRPGActorSheet extends ActorSheet {
       // Append to moves.
       else if (i.type === 'move') {
         if(i.system.moveType != undefined){
-          console.log(i.system.moveType);
           moves[i.system.moveType].push(i);
         }
       }
@@ -194,7 +193,6 @@ export class PTTRPGActorSheet extends ActorSheet {
       type: type,
       system: data
     };
-    console.log(itemData)
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.system["type"];
 

@@ -50,6 +50,11 @@ export class PTTRPGActor extends Actor {
         data[k] = foundry.utils.deepClone(v);
       }
     }
+    if(data.aspects){
+      for (let [k, v] of Object.entries(data.aspects)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
     if (data.attributes.level) {
       data.lvl = data.attributes.level.value ?? 0;
     }

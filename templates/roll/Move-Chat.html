@@ -1,0 +1,27 @@
+<div class="card move-card"> 
+    <header class="line-one"> 
+        <h1 class="title">{{data.item.name}}</h1>      
+    </header>
+    <main> 
+        <section class="description"> 
+            {{data.item.description}}
+        </section>                 
+    </main>
+    {{#if data.item.typeRoll}}             
+    <aside class="result">    
+        {{#ifCond total "<=" 6}}
+        <h3 class="result-title" style="color: red;">Fail</h3>
+        <p class="result-description">{{data.item.results.fail}}</p>
+        {{/ifCond}}
+        {{#ifCond total ">=" 10}}
+        <h3 class="result-title" style="color: green;">Success</h3>
+        <p class="result-description">{{data.item.results.success}}</p>
+        {{/ifCond}}
+        {{#ifCond total "<" 10}}{{#ifCond total ">" 6}}
+        <h3 class="result-title" style="color:chocolate;">Partial Success</h3>
+        <p class="result-description">{{data.item.results.partial}}</p>
+        {{/ifCond}}{{/ifCond}}
+    </aside>                  
+    {{/if}}        
+</div>
+  
