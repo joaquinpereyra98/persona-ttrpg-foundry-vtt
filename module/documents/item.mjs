@@ -22,7 +22,7 @@ export class PTTRPGItem extends Item {
     const rollData = this.actor.getRollData();
     // Grab the item's system data as well.
     rollData.item = foundry.utils.deepClone(this.system);
-
+    rollData.item.name=this.name;
     return rollData;
   }
 
@@ -35,51 +35,22 @@ export class PTTRPGItem extends Item {
     const item = this;
 
     // Initialize chat data.
-    const speaker = ChatMessage.getSpeaker({ actor: this.actor });
+    const speaker = ChatMessage.getSpeaker({ actor: item.actor });
     const rollMode = game.settings.get('core', 'rollMode');
     const label = `[${item.type}] ${item.name}`;
-    const typeRoll = this.system.typeRoll.toLowerCase();
     if(item.type=='move') {
-      if(typeRoll == 'custom') {
-        let r =new Roll("@item.formula + @item.rollModf", this.getRollData());
-        r.toMessage({
+        let r =new Roll("2d6" +(item.system.typeRoll?` + @${item.system.typeRoll.toLowerCase()+'.value'}`:"")+(item.system.rollModf? ` + ${item.system.rollModf}`:""), item.getRollData());
+         r.toMessage({
           speaker: speaker,
           rollMode: rollMode,
           flavor: label,
+          content: await renderTemplate (`systems/pttrpg/templates/roll/Move-Chat.html`, await r.evaluate({ async: false }))+(item.system.typeRoll? (await r.render()):"") ,
         });
         return r;
-      }
-      else {
-        let r = new Roll(`2d6 + @${typeRoll}.value + @item.rollModf`, this.getRollData());
-        await r.roll({async: true});
-        if(r.total>=10)
-          ChatMessage.create({
-            speaker: speaker,
-            rollMode: rollMode,
-            flavor: label,
-            content: item.system.results.success ?? ''
-          });
-        else if(r.total>=7)
-          ChatMessage.create({
-            speaker: speaker,
-            rollMode: rollMode,
-            flavor: label,
-            content: item.system.results.partial ?? ''
-          });
-          else
-          ChatMessage.create({
-            speaker: speaker,
-            rollMode: rollMode,
-            flavor: label,
-            content: item.system.results.fail ?? ''
-          });
-        r.toMessage({
-          speaker: speaker,
-          rollMode: rollMode,
-          flavor: `${label}`,
-        });
-        return r;
-      }
+    }
+    else if(item.type == 'item'){
+      console.log(item.getRollData());
+      //let r = new Roll()
     }
     // If there's no roll data, send a chat message.
     if (!this.system.formula) {
