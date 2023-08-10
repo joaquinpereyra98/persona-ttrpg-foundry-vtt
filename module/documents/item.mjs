@@ -49,8 +49,18 @@ export class PTTRPGItem extends Item {
         return r;
     }
     else if(item.type == 'item'){
-      console.log(item.getRollData());
-      //let r = new Roll()
+      if (!this.system.formula) {
+        console.log(item.getRollData())
+        ChatMessage.create({
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: label,
+          content: await renderTemplate(`systems/pttrpg/templates/roll/Item-Chat.html`, item.getRollData()),
+        })
+      }
+      else{
+    }
+    
     }
     // If there's no roll data, send a chat message.
     if (!this.system.formula) {

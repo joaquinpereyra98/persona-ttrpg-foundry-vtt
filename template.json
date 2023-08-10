@@ -87,7 +87,7 @@
     "templates": {
       "base": {
         "description": "",
-        "typeRoll": "",
+        "formula": "",
         "rollModf": 0
       }
     },
@@ -98,7 +98,7 @@
     },
     "move": {
       "templates": ["base"],
-      "formula": "",
+      "typeRoll": "",
       "moveType": "Basic"
     },
     "slink":{

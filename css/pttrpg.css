@@ -224,21 +224,21 @@
 }
 
 
-.chat-message .message-content .move-card header{
+.chat-message .message-content .card header{
  	font-size: 1.3em;
     font-weight: 500;
 }
-.chat-message .message-content .move-card header, .chat-message .message-content .move-card aside{
+.chat-message .message-content .card header, .chat-message .message-content .card aside{
 	margin: 0;
     display: flex;
     align-items: center;
 }
-.chat-message .message-content .move-card header, .chat-message .message-content .move-card aside *{
+.chat-message .message-content .card header, .chat-message .message-content .card aside *{
 	text-transform: uppercase;
     font-weight: 500;
 }
 
-.chat-message .message-content .move-card header *
+.chat-message .message-content .card header *
 {
     display: flex;
     align-items: center;
@@ -248,7 +248,7 @@
     font-family: "Segoe UI", Roboto;
     height: 2em;
 }
-.chat-message .message-content .move-card header .title{
+.chat-message .message-content .card header .title{
     margin: 0;
     flex-grow: 1;
     background-color: #30343f;
@@ -258,12 +258,12 @@
     padding-right: 1em;
     border: 0.1em solid white;
 }
-.chat-message .message-content .move-card .result
+.chat-message .message-content .card .result
 {
     display: block;
 }
 
-.chat-message .message-content .move-card .result-title
+.chat-message .message-content .card .result-title
 {
     border-bottom:5px solid rgba(123, 123, 123, 0.4);
     border-top: 5px solid rgba(123, 123, 123, 0.4);
@@ -272,13 +272,13 @@
     text-align: center;
 }
 
-.chat-message .message-content .move-card p
+.chat-message .message-content .card p
 {
     font-size: 14px;
     line-height: 1em;
 }
 
-.chat-message .message-content .move-card .result-description
+.chat-message .message-content .card .result-description
 {
     text-transform: inherit;
 }
