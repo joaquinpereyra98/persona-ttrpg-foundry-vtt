@@ -39,18 +39,17 @@ export class PTTRPGItem extends Item {
     const rollMode = game.settings.get('core', 'rollMode');
     const label = `[${item.type}] ${item.name}`;
     if(item.type=='move') {
-        let r =new Roll("2d6" +(item.system.typeRoll?` + @${item.system.typeRoll.toLowerCase()+'.value'}`:"")+(item.system.rollModf? ` + ${item.system.rollModf}`:""), item.getRollData());
+        const r =new Roll("2d6" +(item.system.typeRoll?` + @${item.system.typeRoll.toLowerCase()+'.value'}`:"")+(item.system.rollModf? ` + ${item.system.rollModf}`:""), item.getRollData());
          r.toMessage({
           speaker: speaker,
           rollMode: rollMode,
           flavor: label,
-          content: await renderTemplate (`systems/pttrpg/templates/roll/Move-Chat.html`, await r.evaluate({ async: false }))+(item.system.typeRoll? (await r.render()):"") ,
+          content: await renderTemplate (`systems/pttrpg/templates/roll/Move-Chat.html`, await r.evaluate({ async: false }))+(item.system.typeRoll? (await r.render()):""),
         });
         return r;
     }
     else if(item.type == 'item'){
       if (!this.system.formula) {
-        console.log(item.getRollData())
         ChatMessage.create({
           speaker: speaker,
           rollMode: rollMode,
@@ -59,7 +58,15 @@ export class PTTRPGItem extends Item {
         })
       }
       else{
-    }
+        const r = new Roll(item.system.formula, item.getRollData());
+        r.toMessage({
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: label,
+          content: await renderTemplate(`systems/pttrpg/templates/roll/Item-Chat.html`, item.getRollData()) + (await r.render()),
+        })
+        return r;
+      }
     
     }
     // If there's no roll data, send a chat message.
