@@ -1,11 +1,13 @@
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+import {
+  onManageActiveEffect,
+  prepareActiveEffectCategories,
+} from "../helpers/effects.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
 export class PTTRPGActorSheet extends ActorSheet {
-
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -13,7 +15,13 @@ export class PTTRPGActorSheet extends ActorSheet {
       template: "systems/pttrpg/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "moves" }]
+      tabs: [
+        {
+          navSelector: ".sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "moves",
+        },
+      ],
     });
   }
 
@@ -32,12 +40,12 @@ export class PTTRPGActorSheet extends ActorSheet {
     context.system = actorData.system;
     context.flags = actorData.flags;
 
-    if (actorData.type == 'character') {
+    if (actorData.type == "character") {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
 
-    if (actorData.type == 'npc') {
+    if (actorData.type == "npc") {
       this._prepareItems(context);
     }
 
@@ -77,44 +85,43 @@ export class PTTRPGActorSheet extends ActorSheet {
     // Initialize containers.
     const gear = [];
     const moves = {
-      "Basic": [],
-      "Suit": [],
-      "Arcana": [],
-      "Downtime": [],
-      "Special": []
+      Basic: [],
+      Suit: [],
+      Arcana: [],
+      Downtime: [],
+      Special: [],
     };
     const slink = [];
     const skills = {
-      "Physical": [],
-      "Ranged": [],
-      "Fire": [],
-      "Ice": [],
-      "Electric": [],
-      "Wind": [],
-      "Psychic": [],
-      "Nuclear": [],
-      "Bless": [],
-      "Curse": []
+      Physical: [],
+      Ranged: [],
+      Fire: [],
+      Ice: [],
+      Electric: [],
+      Wind: [],
+      Psychic: [],
+      Nuclear: [],
+      Bless: [],
+      Curse: [],
     };
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to gear.
-      if (i.type === 'item') {
+      if (i.type === "item") {
         gear.push(i);
       }
       // Append to moves.
-      else if (i.type === 'move') {
-        if(i.system.moveType != undefined){
+      else if (i.type === "move") {
+        if (i.system.moveType != undefined) {
           moves[i.system.moveType].push(i);
         }
-      }
-      else if (i.type ==='slink'){
+      } else if (i.type === "slink") {
         slink.push(i);
       }
       // Append to skills.
-      else if (i.type === 'skill') {
+      else if (i.type === "skill") {
         if (i.system.skillAffinity != undefined) {
           skills[i.system.skillAffinity].push(i);
         }
@@ -135,7 +142,7 @@ export class PTTRPGActorSheet extends ActorSheet {
     super.activateListeners(html);
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.find('.item-edit').click(ev => {
+    html.find(".item-edit").click((ev) => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
@@ -146,10 +153,10 @@ export class PTTRPGActorSheet extends ActorSheet {
     if (!this.isEditable) return;
 
     // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate.bind(this));
+    html.find(".item-create").click(this._onItemCreate.bind(this));
 
     // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
+    html.find(".item-delete").click((ev) => {
       const li = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
@@ -157,15 +164,17 @@ export class PTTRPGActorSheet extends ActorSheet {
     });
 
     // Active Effect management
-    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
+    html
+      .find(".effect-control")
+      .click((ev) => onManageActiveEffect(ev, this.actor));
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this));
+    html.find(".rollable").click(this._onRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
-      let handler = ev => this._onDragStart(ev);
-      html.find('li.item').each((i, li) => {
+      let handler = (ev) => this._onDragStart(ev);
+      html.find("li.item").each((i, li) => {
         if (li.classList.contains("inventory-header")) return;
         li.setAttribute("draggable", true);
         li.addEventListener("dragstart", handler, false);
@@ -191,13 +200,13 @@ export class PTTRPGActorSheet extends ActorSheet {
     const itemData = {
       name: name,
       type: type,
-      system: data
+      system: data,
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
     delete itemData.system["type"];
 
     // Finally, create the item!
-    return await Item.create(itemData, {parent: this.actor});
+    return await Item.create(itemData, { parent: this.actor });
   }
 
   /**
@@ -212,8 +221,8 @@ export class PTTRPGActorSheet extends ActorSheet {
 
     // Handle item rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
+      if (dataset.rollType == "item") {
+        const itemId = element.closest(".item").dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
       }
@@ -221,15 +230,14 @@ export class PTTRPGActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[ability] ${dataset.label}` : "";
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
+        rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
     }
   }
-
 }

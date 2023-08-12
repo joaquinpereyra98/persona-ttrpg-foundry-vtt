@@ -16,13 +16,13 @@ export class PTTRPGItem extends Item {
    * Prepare a data object which is passed to any Roll formulas which are created related to this Item
    * @private
    */
-   getRollData() {
+  getRollData() {
     // If present, return the actor's roll data.
-    if ( !this.actor ) return null;
+    if (!this.actor) return null;
     const rollData = this.actor.getRollData();
     // Grab the item's system data as well.
     rollData.item = foundry.utils.deepClone(this.system);
-    rollData.item.name=this.name;
+    rollData.item.name = this.name;
     return rollData;
   }
 
@@ -36,47 +36,61 @@ export class PTTRPGItem extends Item {
 
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: item.actor });
-    const rollMode = game.settings.get('core', 'rollMode');
+    const rollMode = game.settings.get("core", "rollMode");
     const label = `[${item.type}] ${item.name}`;
-    if(item.type=='move') {
-        const r =new Roll("2d6" +(item.system.typeRoll?` + @${item.system.typeRoll.toLowerCase()+'.value'}`:"")+(item.system.rollModf? ` + ${item.system.rollModf}`:""), item.getRollData());
-         r.toMessage({
-          speaker: speaker,
-          rollMode: rollMode,
-          flavor: label,
-          content: await renderTemplate (`systems/pttrpg/templates/roll/Move-Chat.html`, await r.evaluate({ async: false }))+(item.system.typeRoll? (await r.render()):""),
-        });
-        return r;
-    }
-    else if(item.type == 'item' ||item.type == 'skill'){
+    if (item.type == "move") {
+      const r = new Roll(
+        "2d6" +
+          (item.system.typeRoll
+            ? ` + @${item.system.typeRoll.toLowerCase() + ".value"}`
+            : "") +
+          (item.system.rollModf ? ` + ${item.system.rollModf}` : ""),
+        item.getRollData()
+      );
+      r.toMessage({
+        speaker: speaker,
+        rollMode: rollMode,
+        flavor: label,
+        content:
+          (await renderTemplate(
+            `systems/pttrpg/templates/roll/Move-Chat.html`,
+            await r.evaluate({ async: false })
+          )) + (item.system.typeRoll ? await r.render() : ""),
+      });
+      return r;
+    } else if (item.type == "item" || item.type == "skill") {
       if (!this.system.formula) {
         ChatMessage.create({
           speaker: speaker,
           rollMode: rollMode,
           flavor: label,
-          content: await renderTemplate(`systems/pttrpg/templates/roll/Item-Chat.html`, item.getRollData()),
-        })
-      }
-      else{
+          content: await renderTemplate(
+            `systems/pttrpg/templates/roll/Item-Chat.html`,
+            item.getRollData()
+          ),
+        });
+      } else {
         const r = new Roll(item.system.formula, item.getRollData());
         r.toMessage({
           speaker: speaker,
           rollMode: rollMode,
           flavor: label,
-          content: await renderTemplate(`systems/pttrpg/templates/roll/Item-Chat.html`, item.getRollData()) + (await r.render()),
-        })
+          content:
+            (await renderTemplate(
+              `systems/pttrpg/templates/roll/Item-Chat.html`,
+              item.getRollData()
+            )) + (await r.render()),
+        });
         return r;
       }
-    }
-    else if (!this.system.formula) {
+    } else if (!this.system.formula) {
       ChatMessage.create({
         speaker: speaker,
         rollMode: rollMode,
         flavor: label,
-        content: item.system.description ?? ''
+        content: item.system.description ?? "",
       });
-    }
-    else {
+    } else {
       // Retrieve roll data.
       const rollData = this.getRollData();
       // Invoke the roll and submit it to chat.

@@ -1,12 +1,9 @@
 export class PTTRPGActor extends Actor {
-
-
   prepareData() {
     super.prepareData();
   }
 
-  prepareBaseData() {
-  }
+  prepareBaseData() {}
 
   prepareDerivedData() {
     const actorData = this;
@@ -18,7 +15,7 @@ export class PTTRPGActor extends Actor {
   }
 
   _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+    if (actorData.type !== "character") return;
 
     /*const systemData = actorData.system;
     for (let [key, ability] of Object.entries(systemData.abilities)) {
@@ -27,11 +24,11 @@ export class PTTRPGActor extends Actor {
   }
 
   _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+    if (actorData.type !== "npc") return;
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
-    systemData.xp = (systemData.cr * systemData.cr) * 100;
+    systemData.xp = systemData.cr * systemData.cr * 100;
   }
   getRollData() {
     const data = super.getRollData();
@@ -44,13 +41,13 @@ export class PTTRPGActor extends Actor {
   }
 
   _getCharacterRollData(data) {
-    if (this.type !== 'character') return;
+    if (this.type !== "character") return;
     if (data.abilities) {
       for (let [k, v] of Object.entries(data.abilities)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
-    if(data.aspects){
+    if (data.aspects) {
       for (let [k, v] of Object.entries(data.aspects)) {
         data[k] = foundry.utils.deepClone(v);
       }
@@ -60,9 +57,8 @@ export class PTTRPGActor extends Actor {
     }
   }
   _getNpcRollData(data) {
-    if (this.type !== 'npc') return;
+    if (this.type !== "npc") return;
 
     // Process additional NPC data here.
   }
-
 }
