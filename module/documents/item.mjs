@@ -48,7 +48,7 @@ export class PTTRPGItem extends Item {
         });
         return r;
     }
-    else if(item.type == 'item'){
+    else if(item.type == 'item' ||item.type == 'skill'){
       if (!this.system.formula) {
         ChatMessage.create({
           speaker: speaker,
@@ -67,10 +67,8 @@ export class PTTRPGItem extends Item {
         })
         return r;
       }
-    
     }
-    // If there's no roll data, send a chat message.
-    if (!this.system.formula) {
+    else if (!this.system.formula) {
       ChatMessage.create({
         speaker: speaker,
         rollMode: rollMode,
@@ -78,7 +76,6 @@ export class PTTRPGItem extends Item {
         content: item.system.description ?? ''
       });
     }
-    // Otherwise, create a roll and send a chat message from it.
     else {
       // Retrieve roll data.
       const rollData = this.getRollData();
